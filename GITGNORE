@@ -1,0 +1,19 @@
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos temporários
+*.tmp
+*.swp
+.DS_Store
+
+# Ignorar backups de banco de dados
+*.sql
+*.bak
+*.backup
+
+# Ignorar diretórios de ambientes virtuais (Python, por exemplo)
+venv/
+.env/
+
+# Ignorar arquivos de configuração do MySQL Workbench
+*.mwb.bak
