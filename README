@@ -1,0 +1,51 @@
+# Sistema de Inventário de Armazém
+
+Este projeto é um sistema simples de gerenciamento de inventário de armazém implementado em SQL. Ele permite o gerenciamento de produtos, categorias e fornecedores, com funcionalidades para adicionar, consultar, atualizar e remover registros no banco de dados.
+
+## Estrutura do Sistema
+
+O sistema contém três tabelas principais:
+- **Categorias**: Armazena diferentes categorias de produtos.
+- **Fornecedores**: Registra informações sobre os fornecedores dos produtos.
+- **Produtos**: Armazena detalhes dos produtos, incluindo quantidade em estoque, preço e relação com categorias.
+
+## Funcionalidades
+
+- **Categorias**: Adicionar, visualizar, atualizar e remover categorias de produtos.
+- **Fornecedores**: Gerenciar informações de fornecedores.
+- **Produtos**: Adicionar produtos ao estoque, consultar produtos por categoria ou preço, atualizar informações de produtos e remover itens descontinuados.
+
+### Operações Principais
+
+1. **Criação do Banco de Dados**: Cria as tabelas de Categorias, Fornecedores e Produtos.
+2. **Inserção de Dados**: Popula o banco de dados com categorias, fornecedores e produtos.
+3. **Consultas**:
+   - Consultar todos os produtos disponíveis no estoque.
+   - Listar produtos de uma categoria específica.
+   - Visualizar fornecedores que fornecem produtos de alto valor.
+4. **Atualizações**:
+   - Ajustar o preço de produtos.
+   - Renomear categorias.
+   - Alterar informações de fornecedores.
+5. **Remoção de Dados**:
+   - Excluir produtos que não estão mais em estoque.
+   - Remover categorias e fornecedores que não estão mais em uso.
+
+### Requisitos
+
+- **MySQL** ou outro banco de dados SQL compatível.
+- Ferramenta de gerenciamento de banco de dados como **MySQL Workbench** ou **DBeaver**.
+
+### Como Executar
+
+1. Clone o repositório ou copie o script SQL.
+2. Execute o script SQL no seu ambiente de banco de dados.
+3. Adapte conforme necessário para suas necessidades de inventário.
+
+### Licença
+
+Este projeto está licenciado sob a licença MIT. Para mais detalhes, consulte o arquivo [LICENSE](./LICENSE).
+
+### Autor
+
+Desenvolvido por [Seu Nome].
