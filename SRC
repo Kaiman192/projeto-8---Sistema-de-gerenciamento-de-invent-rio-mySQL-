@@ -1,0 +1,72 @@
+CREATE DATABASE InventarioArmazem;
+USE InventarioArmazem;
+CREATE TABLE Categorias (
+    CategoriaID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL
+);
+CREATE TABLE Fornecedores (
+    FornecedorID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    Contato VARCHAR(50),
+    Endereco TEXT
+);
+CREATE TABLE Produtos (
+    ProdutoID INT PRIMARY KEY AUTO_INCREMENT,
+    Nome VARCHAR(100) NOT NULL,
+    Descricao TEXT,
+    Preco DECIMAL(10, 2) NOT NULL,
+    QuantidadeEmEstoque INT NOT NULL,
+    CategoriaID INT,
+    FOREIGN KEY (CategoriaID) REFERENCES Categorias(CategoriaID) ON DELETE SET NULL
+);
+INSERT INTO Categorias (Nome) VALUES
+('Eletrônicos'),
+('Móveis'),
+('Alimentos');
+INSERT INTO Fornecedores (Nome, Contato, Endereco) VALUES
+('TechSupply', '987654321', 'Rua A, 123, Cidade X'),
+('MoveisCo', '123456789', 'Rua B, 456, Cidade Y'),
+('FoodService', '555555555', 'Rua C, 789, Cidade Z');
+INSERT INTO Produtos (Nome, Descricao, Preco, QuantidadeEmEstoque, CategoriaID) VALUES
+('Notebook', 'Notebook de última geração', 2500.00, 50, 1),
+('Sofá', 'Sofá de três lugares', 1500.00, 20, 2),
+('Mesa de Jantar', 'Mesa de madeira para 6 pessoas', 1200.00, 15, 2),
+('Televisão', 'Smart TV 55 polegadas', 3000.00, 30, 1),
+('Arroz', 'Pacote de arroz 5kg', 20.00, 100, 3);
+SELECT 
+    Nome, Descricao, Preco, QuantidadeEmEstoque 
+FROM 
+    Produtos;
+SELECT 
+    P.Nome, P.Descricao, P.Preco, P.QuantidadeEmEstoque 
+FROM 
+    Produtos P
+JOIN 
+    Categorias C ON P.CategoriaID = C.CategoriaID
+WHERE 
+    C.Nome = 'Eletrônicos';
+SELECT 
+    F.Nome, F.Contato, F.Endereco 
+FROM 
+    Fornecedores F
+JOIN 
+    Produtos P ON F.FornecedorID = P.ProdutoID
+WHERE 
+    P.Preco > 2000.00;
+UPDATE Produtos 
+SET Preco = 2700.00 
+WHERE Nome = 'Notebook';
+UPDATE Categorias 
+SET Nome = 'Eletrodomésticos' 
+WHERE Nome = 'Eletrônicos';
+UPDATE Fornecedores 
+SET Endereco = 'Rua Nova, 999, Cidade X' 
+WHERE Nome = 'TechSupply';
+DELETE FROM Produtos 
+WHERE Nome = 'Arroz';
+DELETE FROM Categorias 
+WHERE CategoriaID = 3 AND 
+      CategoriaID NOT IN (SELECT CategoriaID FROM Produtos);
+DELETE FROM Fornecedores 
+WHERE FornecedorID = 2 AND 
+      FornecedorID NOT IN (SELECT ProdutoID FROM Produtos);
